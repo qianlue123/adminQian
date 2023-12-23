@@ -1,0 +1,11 @@
+# assets里只留 /less/freepbx/
+/*
+!/assets
+assets/*
+!/assets/less
+assets/less/*
+!/assets/less/freepbx
+
+!/views
+!.gitignore
+!README.md
