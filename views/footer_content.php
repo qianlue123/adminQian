@@ -1,6 +1,7 @@
 <?php
 global $amp_conf;
 $html = '';
+// $version = '16.0.33'
 $version	 = get_framework_version();
 $version = $version ? $version : getversion();
 $version_tag = '?load_version=' . urlencode($version);
@@ -14,21 +15,16 @@ if ($amp_conf['FORCE_JS_CSS_IMG_DOWNLOAD']) {
 $baseUrl = isset($baseUrl) ? $baseUrl : "";
 
 // Brandable logos in footer
-//fpbx logo
+// 去掉页脚左侧图片
 $html .= '<div class="col-md-4">
-	<a target="_blank" href="'
-                . $amp_conf['BRAND_IMAGE_FREEPBX_LINK_FOOT']
-                . '" >'
-                . '<img id="footer_logo1" src="'.$baseUrl.'/admin/'.$amp_conf['BRAND_IMAGE_FREEPBX_FOOT'].$version_tag
-                . '" alt="'.$amp_conf['BRAND_FREEPBX_ALT_FOOT'] .'"/>
-	</a>
 	</div>';
 
 //text
-$html .= '<div class="col-md-4" id="footer_text">';
-$html .= sprintf(_('%s is a registered trademark of'),'<a href="http://www.freepbx.org" target="_blank">FreePBX</a>') . br() . '<a href="http://www.freepbx.org/copyright.html" target="_blank"> Sangoma Technologies Inc.</a>' . br();
-$html .= sprintf(_('%s %s is licensed under the %s'),'FreePBX',$version,'<a href="http://www.gnu.org/copyleft/gpl.html" target="_blank"> GPL</a>') . br();
-$html .= '<a href="http://www.freepbx.org/copyright.html" target="_blank">Copyright&copy; 2007-'.date('Y',time()).'</a>';
+// 这块文本的样式表 footer_text 可能失效了，虽然在 /ucp/htdocs/assets/less/ucp/page.less 里有一个同名
+$html .= '<div class="col-md-4" id="Qian_footer_text">';
+$html .= 'QianPBX belongs to <a href="http://www.qianlue.cn/" target="_blank"> Qianlue Tech.</a>' 
+         . br();
+$html .= 'Happy &copy '.date('Y',time()).'</a>';
 
 //module license
 if (!empty($active_modules[$module_name]['license'])) {
@@ -43,12 +39,8 @@ if (isset($amp_conf['DEVEL']) && $amp_conf['DEVEL']) {
 }
 $html .= '</div>';
 
+// 右侧图片显示, 删除后中间子块宽度变窄
 $html .= '<div class="col-md-4">
-	<a target="_blank" href="' . $amp_conf['BRAND_IMAGE_SPONSOR_LINK_FOOT']
-		. '" >'
-		. '<img id="footer_logo" src="'.$baseUrl.'/admin/' . $amp_conf['BRAND_IMAGE_SPONSOR_FOOT'] . '" '
-		. 'alt="' . $amp_conf['BRAND_SPONSOR_ALT_FOOT'] . '"/>
-	</a>
 	</div>';
 echo $html;
 ?>
