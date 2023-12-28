@@ -18,6 +18,8 @@ modules/*
 !/modules/new_wang
 !/modules/new_test
 
+# 主目录的config.php涉及一些界面安全提示逻辑, 需要屏蔽 
+!config.php
 !/views
 !.gitignore
 !README.md
