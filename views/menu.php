@@ -1,6 +1,15 @@
 <?php
 global $amp_conf;
 global $_item_sort;
+
+/**
+ * freepbx-navbar 在 /assets/less/freepbx/menu.less  
+ * navbar-default 控制与颜色相关的内容
+ * 
+ * 搜索按钮的样式表在 /assets/less/freepbx/search.less 
+ * 使用 class="btn nav-button" 加入同类型的按钮
+ * tip: 不要在导航里直接放 button, 会让周围间距不正常
+ */
 ?>
 <div class="freepbx-navbar">
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -13,12 +22,17 @@ global $_item_sort;
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">
-					<img src="<?php echo $amp_conf['BRAND_IMAGE_TANGO_LEFT']; ?>" alt="<?php echo $amp_conf['BRAND_FREEPBX_ALT_LEFT']; ?>" title="<?php echo $amp_conf['BRAND_FREEPBX_ALT_LEFT']; ?>" id="MENU_BRAND_IMAGE_TANGO_LEFT" data-BRAND_IMAGE_FREEPBX_LINK_LEFT="<?php echo $amp_conf['BRAND_IMAGE_FREEPBX_LINK_LEFT']; ?>" />
+					Qian
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="fpbx-menu-collapse">
 				<ul class="nav navbar-nav navbar-left">
 					<?php include_once(__DIR__ . '/menu_items.php'); ?>
+				</ul>
+				<ul class="nav navbar-nav navbar-left">
+					<button id="search-btn" class="btn nav-button"><i class="fa fa-search"></i></button>
+					<!-- <button type="button" class="btn btn-success" onclick='window.open("views/qian_A.html")'>命令功能</button> -->
+					<button type="button" class="btn btn-success" onclick='window.open("http://192.168.100.186:2023/#")'>命令功能</button>
 				</ul>
 			</div>
 			<ul class="stuck-right">
@@ -42,7 +56,6 @@ global $_item_sort;
 							</ul>
 						</li>
 					<?php } ?>
-					<button id="search-btn" class="btn nav-button"><i class="fa fa-search"></i></button>
 					<?php if($authtype != 'none') {?>
 						<li class="dropdown admin-btn">
 							<button class="btn dropdown-toggle nav-button" data-toggle="dropdown"><i id="settings-cog" class="fa fa-cog"></i></button>
