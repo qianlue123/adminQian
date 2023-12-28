@@ -6,6 +6,18 @@ assets/*
 assets/less/*
 !/assets/less/freepbx
 
+!/i18n
+i18n/*
+!/i18n/zh_CN
+
+!/modules
+modules/*
+# 字母n打头的本身还没有，放在目录里容易找到
+!/modules/new_PBY
+!/modules/new_qian
+!/modules/new_wang
+!/modules/new_test
+
 !/views
 !.gitignore
 !README.md

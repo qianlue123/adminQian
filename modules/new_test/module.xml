@@ -1,0 +1,30 @@
+<![CDATA[ 一点研究与发现:
+  在 Admin - module Admin 模块里专门管理其他模块, 模块的信息是解读这个xml生成的。
+  这里的改动刷新系统后就能被解析
+
+  界面的导航栏 下拉菜单的选项里的入口 也从这里控制, <category>具体是哪个导航按钮。
+  下拉菜单解读 <menuitems>下的标签 也就是test模块对应的就是
+    <menuitems>
+      <test>xxx<test>
+    </menuitems>
+]]>
+<module>
+  <rawname>new_test</rawname>
+  <repo>extended</repo>
+  <name>QianQBX</name>
+  <version>16.0.1</version>
+  <publisher>江苏仟略信息技术</publisher>
+  <license>MIT</license>
+  <licenselink>https://mit-license.org/</licenselink>
+  <category>Settings</category>
+  <description>向 centos7 终端发送调整 asterisk 的命令和返回结果</description>
+  <changelog>
+	*1.0* 2023 test.
+  </changelog>
+  <menuitems>
+    <new_test>命令发送页</new_test>
+  </menuitems>
+  <supported>
+    <version>16.0</version>
+  </supported>
+</module>
