@@ -17,12 +17,15 @@ removeDir() {
   fi
 }
 
+# ----- ----- main ----- -----
+posSrc="/var/www/html/admin"
+
 # 界面框架本身替换
-removedir /var/www/html/admin/assets/less/freepbx
-removedir /var/www/html/admin/views
+removedir ${posSrc}/assets/less/freepbx
+removedir ${posSrc}/views
 
-sudo mv ./asstes/less/freepbx /var/www/html/admin/asstes/less/
-sudo mv ./views /var/www/html/admin/
+sudo cp -r ./asstes/less/freepbx ${posSrc}/asstes/less/
+sudo cp -r ./views ${posSrc}
 
-removeDir /var/www/html/admin/modules/WP_test
-sudo mv ./modules/WP_test /var/www/html/admin/modules/
+removeDir ${posSrc}/modules/WP_test
+sudo cp -r ./modules/WP_test ${posSrc}/modules/
