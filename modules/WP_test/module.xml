@@ -1,0 +1,20 @@
+<module>
+  <rawname>WP_test</rawname>
+  <repo>extended</repo>
+  <name>WP_module</name>
+  <version>16.0.1</version>
+  <publisher>江苏仟略信息技术</publisher>
+  <license>MIT</license>
+  <licenselink>https://mit-license.org/</licenselink>
+  <category>Admin</category>
+  <description>调度</description>
+  <changelog>
+	*1.0* Add 2023.
+  </changelog>
+  <menuitems>
+    <WP_test>仟略专用调度</WP_test>
+  </menuitems>
+  <supported>
+    <version>16.0</version>
+  </supported>
+</module>

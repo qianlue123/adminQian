@@ -17,6 +17,7 @@ modules/*
 !/modules/new_qian
 !/modules/new_wang
 !/modules/new_test
+!/modules/WP_*
 
 # 主目录的config.php涉及一些界面安全提示逻辑, 需要屏蔽 
 !config.php
