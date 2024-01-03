@@ -24,3 +24,6 @@ modules/*
 !/views
 !.gitignore
 !README.md
+
+# 自制取代脚本
+!WP_replace.sh

@@ -14,13 +14,8 @@
 ```bash
 cd /var/www/html/admin
 git clone --branch qianPBX https://github.com/qianlue123/adminQian.git
-
-sudo mv asstes/less/freepbx asstes/less/freepbx.bak
-sudo mv views views.bak
-
-sudo mv adminQian/asstes/less/freepbx ./asstes/less/
-sudo mv adminQian/views .
-rm -rf adminQian
+cd adminQian
+sudo bash WP_replace.sh
 ```
 
 ## 本地目录结构
