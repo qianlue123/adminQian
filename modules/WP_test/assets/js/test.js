@@ -38,29 +38,6 @@ document.getElementById('Extension_List').addEventListener('mousedown', function
 
 });
 
-// 打开分机选择框时，读取数据库，把正在通话的分机增加到选项里（不是所有）
-document.getElementById('Extension_forcein').addEventListener('click', function () {
-  console.log("显示使有分机, 在里面挑选一个");
-  var mysql = require('mysql');
-  console.log("连上数据库");
-  let connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "wangpeng",
-    password: "like2022",
-    database: "asterisk"
-  });
-
-  connection.connect((err) => {
-    if (err) {
-      console.log("连接失败: " + err.stack);
-      return
-    } else {
-      console.log("连接上");
-    }
-  });
-});
-
 document.addEventListener('DOMContentLoaded', btn_create);
 function btn_create() {
   var btn = document.getElementById("create-extension");

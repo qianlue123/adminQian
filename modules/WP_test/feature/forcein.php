@@ -37,12 +37,29 @@
                 <i aria-hidden="true"></i> 插 入
             </button>
         </div>
+        <div class="cmdresult-forcein"></div>
     </div>
 </div>
 
-<script>
-    var btn = document.getElementById("btn-forcein");
-    btn.onclick = function() {
-        alert("增加一个话机!");
-    };
+<script type="text/javascript">
+    $('#btn-forcein').click(function() {
+        var box_output = $('div.cmdresult-forcein');
+        var post_data = {
+            module: 'asterisk-cli',
+            command: 'clicmd',
+            // 直接拼装能在 asterisk 命令行里运行的命令
+            data: 'pjsip show version',
+        };
+
+        box_output.html("<span>" + _("Loading...") + "</span>");
+        $.post(window.FreePBX.ajaxurl, post_data, function(data) {
+            var msg = "";
+            if (data.status) {
+                msg = "<pre>" + JSON.parse(data.message) + "</pre>";
+            } else {
+                msg = "<b>Error</b>";
+            }
+            box_output.html(msg);
+        });
+    });
 </script>

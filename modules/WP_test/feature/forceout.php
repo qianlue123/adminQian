@@ -50,8 +50,32 @@ function generate_selectoption()
         <div class="row">
             <div class="col-md-9"></div>
             <span class="glyphicon glyphicon-resize-full"></span> &nbsp;
-            <button class="btn btn-sm btn-danger" id="btn_forceout" type="button"> 强 拆 </button>
+            <button class="btn btn-sm btn-danger" id="btn-forceout" type="button"> 强 拆 </button>
             </span>
         </div>
+        <div class="cmdresult-forceout"></div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#btn-forceout').click(function() {
+        var box_output = $('div.cmdresult-forceout');
+        var post_data = {
+            module: 'asterisk-cli',
+            command: 'clicmd',
+            // 直接拼装能在 asterisk 命令行里运行的命令
+            data: 'pjsip show version',
+        };
+
+        box_output.html("<span>" + _("Loading...") + "</span>");
+        $.post(window.FreePBX.ajaxurl, post_data, function(data) {
+            var msg = "";
+            if (data.status) {
+                msg = "<pre>" + JSON.parse(data.message) + "</pre>";
+            } else {
+                msg = "<b>Error</b>";
+            }
+            box_output.html(msg);
+        });
+    });
+</script>
