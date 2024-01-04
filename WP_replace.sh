@@ -17,6 +17,9 @@ removeDir() {
     # 这里用不到这个逻辑了，每个输入的模块都是从数组中读取的全名
     return 0;
   fi
+  
+  # 本来就没有的话就不用移动了
+  if [ ! -e $1 ]; then return 0; fi
 
   if [ -d '/opt/${dir}.bak' ]; then sudo rm -r $1
   else 
