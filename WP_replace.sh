@@ -51,9 +51,14 @@ replaceModule() {
   do
     echo $d;
     local moduleName=`basename $d`
-    removeDir ${posSrc}/modules/${moduleName}
+    # 放置模块的真实路径
+    local pathModule="/var/www/html/admin/modules/${moduleName}"
+
+    removeDir $pathModule
     sudo cp -r $d ${posSrc}/modules/
-    sudo ln -s $d/assets ${posSrc}/assets/${moduleName}
+    # 模块的样式表软链接
+    sudo rm ${posSrc}/assets/${moduleName}
+    sudo ln -s ${pathModule}/assets ${posSrc}/assets/${moduleName}
   done
 }
 
