@@ -1,0 +1,22 @@
+<module>
+  <rawname>new_qian1</rawname>
+  <repo>extended</repo>
+  <name>仟略多方通话</name>
+  <version>16.0.1</version>
+  <publisher>江苏仟略信息技术</publisher>
+  <license>MIT</license>
+  <licenselink>https://mit-license.org/</licenselink>
+  <description>3个以上话机通话</description>
+  <changelog>
+		*16.0.1* 全新版本
+	</changelog>
+  <category>Applications</category>
+  <menuitems>
+    <new_qian1>仟略专用-多方通话</new_qian1>
+  </menuitems>
+  <location>00000000</location>
+  <md5sum>00000000</md5sum>
+  <supported>
+    <version>16.0</version>
+  </supported>
+</module>
