@@ -21,7 +21,7 @@ removeDir() {
   # 本来就没有的话就不用移动了
   if [ ! -e $1 ]; then return 0; fi
 
-  if [ -d '/opt/${dir}.bak' ]; then sudo rm -r $1
+  if [ -d "/opt/${dir}.bak" ]; then sudo rm -r $1
   else 
     sudo mv $1 /opt/${dir}.bak
   fi
