@@ -23,11 +23,15 @@ function generate_selectoption()
 ?>
 
 <div class="display full-border">
-    <h1 class="section-title" data-for="asteriskcli"> 话机强拆 </h1>
-
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <?php echo $helptext1 ?>.
+    <div class="row col-md-3">
+        <h1 class="section-title" data-for="asteriskcli">话机强拆
+            <b id="iconhelp-forceout" class="fa fa-question-circle"></b>
+        </h1>
+    </div>
+    <div class="row col-md-9">
+        <div id="text1-forceout" style="visibility: hidden;" class="alert alert-warning">
+            <?php echo $helptext1 ?>.
+        </div>
     </div>
 
     <div class="container-fluid" data-id="asteriskcli">
@@ -78,4 +82,16 @@ function generate_selectoption()
             box_output.html(msg);
         });
     });
+
+    var iconhelp = document.getElementById("iconhelp-forceout");
+    iconhelp.onmouseover = function() {
+        var textDiv = document.getElementById("text1-forceout");
+        if (textDiv.style.visibility === "hidden") {
+            textDiv.style.visibility = "visible";
+        }
+    }
+    iconhelp.onmouseleave = function() {
+        var textDiv = document.getElementById("text1-forceout");
+        textDiv.style.visibility = "hidden";
+    }
 </script>

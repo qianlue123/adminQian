@@ -2,11 +2,17 @@
 # <div class="fpbx-container col-md-9"> 此处不写, 写在调用文件
 ?>
 <div class="display full-border">
-    <h1 class="section-title" data-for="asteriskcli">通话中新插入分机</h1>
-    <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <?php echo $helptext2 ?>.
+    <div class="row col-md-3">
+        <h1 class="section-title" data-for="asteriskcli">插入分机
+            <b id="iconhelp-forcein" class="fa fa-question-circle"></b>
+        </h1>
     </div>
+    <div class="row col-md-9">
+        <div id="text1-forcein" style="visibility: hidden;" class="alert alert-success">
+            <?php echo $helptext2 ?>.
+        </div>
+    </div>
+
     <div class="container-fluid" data-id="asteriskcli">
         <div class="row">
             <div class="col-md-3 group-vertical">
@@ -62,4 +68,16 @@
             box_output.html(msg);
         });
     });
+
+    var iconhelp = document.getElementById("iconhelp-forcein");
+    iconhelp.onmouseover = function() {
+        var textDiv = document.getElementById("text1-forcein");
+        if (textDiv.style.visibility === "hidden") {
+            textDiv.style.visibility = "visible";
+        }
+    }
+    iconhelp.onmouseleave = function() {
+        var textDiv = document.getElementById("text1-forcein");
+        textDiv.style.visibility = "hidden";
+    }
 </script>
