@@ -9,7 +9,7 @@
 
 # 用法
 
-在ISO安装完成后, 登录将原先的两个目录替换。
+在ISO安装完成后, 直接执行根目录的 `WP_replace.sh` 脚本，它会自动替换原先的一些目录。
 
 ```bash
 cd /var/www/html/admin
@@ -32,14 +32,17 @@ admin/
 │           └── *.less
 ├── ...
 ├── modules             # 所有的模块
-│   └── ***             # 自己的模块
+│   ├── core
+│   ├── ...
+│   ├── new_*           # 公司的
+│   └── WP_*            # 自己试的
 └── views               # 页面对应的实际代码
     ├── whoops/
     ├── ...
     └── *.php
 ```
 
-本来想用两个仓库分开装 php代码和样式表, 但是那样不好同步。
+**Note** 无论在哪个模块界面，点击了功能提交按钮后，要点击右上角跳出的 “更新配置” 红色按钮，然后等几秒就起作用，它会自动去更新 `/etc/asterisk/` 目录下的 conf 配置文件，并且在 `/etc/asterisk/ari_additional.conf` 的密码会自动修改。
 
 ## 新增模块的设计
 
@@ -56,4 +59,5 @@ feature/
 
 # 参考
 
-暂无
+- [Sangoma 界面统一准则](https://sangomakb.atlassian.net/wiki/spaces/FP/pages/10093035/Uniformity+Guidelines)
+
