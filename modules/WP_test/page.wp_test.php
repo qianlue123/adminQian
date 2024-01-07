@@ -28,65 +28,85 @@ $helptext3 = _('添加话机，默认密码和分机号一样');
         include_once __DIR__ . '/feature/forcein.php';
         ?>
 
-        <form action="" method="POST" class="form-horizontal" role="form">
-            <div class="form-group" data-for="asteriskcli">
-                <legend>添加一个话机</legend>
-            </div>
-            <div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <?php echo $helptext3 ?>.
-            </div>
-
-            <div class="container-fluid" data-id="asteriskcli">
-                <div class="row form-group">
-                    <div class="input-group col-md-4">
-                        <div class="input-group-addon">分机号</div>
-                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="2024">
-
-                        <div class="input-group-addon">显示名</div>
-                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="qianlue">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-3">
-                        <button class="btn btn-info" id="create-extension" type="button">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i> 添加 </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-
         <span class="badge"><span class="glyphicon glyphicon-console"></span> 系统反馈 </span>
         <div class="cmd_output"></div>
-
-        <script type="text/javascript">
-            $('#create-extension').click(function() {
-
-                var box_output = $('div.cmd_output');
-                var post_data = {
-                    module: 'asterisk-cli',
-                    command: 'clicmd',
-                    // data: $('#astcmd').val(),
-                    data: 'core show help',
-                };
-
-                box_output.html("<pre>" + _("Loading...") + "</pre>");
-                $.post(window.FreePBX.ajaxurl, post_data, function(data) {
-                    var msg = "";
-                    if (data.status) {
-                        msg = "<pre>" + JSON.parse(data.message) + "</pre>";
-                    } else {
-                        msg = "<b>Error</b>";
-                    }
-                    box_output.html(msg);
-                });
-            });
-        </script>
 
     </div>
 
     <div class="fpbx-container col-md-3">
+        <h2 class="section-title">增加话机</h2>
+        <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>填写注册信息</a>
+        <div class="modal fade" id="modal-id">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">注册 sip 话机</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-success"><?php echo $helptext3 ?></div>
+                        <div class="container-fluid" data-id="asteriskcli">
+                            <div class="element-container">
+                                <div class="row">
+                                    <div class="col-md-4">分机号</div>
+                                    <div class="col-md-6">
+                                        <input type="text" id="phoneID" placeholder="9001">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="element-container">
+                                <div class="row">
+                                    <div class="col-md-4">显示名</div>
+                                    <div class="col-md-6">
+                                        <input type="text" id="phonename" placeholder="qianlue">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="element-container">
+                                <div class="row">
+                                    <div class="col-md-4">密码</div>
+                                    <div class="col-md-6">
+                                        <input type="text" id="password" placeholder="9001">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" id="create-extension">
+                            <i class="fa fa-paper-plane" aria-hidden="true"></i> 添加
+                        </button>
+                    </div>
+                    <script type="text/javascript">
+                        $('#create-extension').click(function() {
+
+                            var box_output = $('div.cmd_output');
+                            var post_data = {
+                                module: 'asterisk-cli',
+                                command: 'clicmd',
+                                // data: $('#astcmd').val(),
+                                data: 'core show help',
+                            };
+
+                            box_output.html("<pre>" + _("Loading...") + "</pre>");
+                            $.post(window.FreePBX.ajaxurl, post_data, function(data) {
+                                var msg = "";
+                                if (data.status) {
+                                    msg = "<pre>" + JSON.parse(data.message) + "</pre>";
+                                } else {
+                                    msg = "<b>Error</b>";
+                                }
+                                box_output.html(msg);
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
         <h2 class="section-title">已注册电话</h2>
         <table data-cookie="true" data-cookie-id-table="extensions-sip" data-url="ajax.php?module=core&amp;command=getExtensionGrid&amp;type=pjsip" data-cache="false" data-show-refresh="true" data-toolbar="#toolbar-sip" data-maintain-selected="true" data-show-columns="true" data-show-toggle="true" data-toggle="table" data-pagination="true" class="table table-striped ext-list">
             <thead>
