@@ -62,6 +62,20 @@ replaceModule() {
   done
 }
 
+# 利用 fwconsole ma 命令安装新模块
+installModule() {
+  local dList=`echo $@` 
+
+  for d in ${dList[*]}
+  do
+    local moduleName=`basename $d`
+    fwconsole ma list | grep ${moduleName} 1> /dev/null
+    if [ $? -eq 1 ]; then continue
+    fi
+    fwconsole ma install $moduleName --skipbreakingcheck
+  done
+}
+
 # ----- ----- main ----- -----
 posSrc="/var/www/html/admin"
 
@@ -69,6 +83,8 @@ posSrc="/var/www/html/admin"
 moduleArr=($(getModuleArr))
 arg1=`echo ${moduleArr[*]}`
 replaceModule $arg1
+# 如果此时不安装, 后续还要从界面 模块管理 手动安装
+installModule $arg1
 
 # 界面框架本身替换
 op=0
