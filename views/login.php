@@ -25,27 +25,20 @@
 	<div class="login_item_title">
 		<a href="#" class="login_item" id="login_admin" style="background-image: url(assets/images/sys-admin.png);"/>&nbsp;</a>
 		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
-			<?php echo _('FreePBX Administration')?>
+			管理员后台
 		</span>
 	</div>
+	<?php
+	/**
+	 *  class="login_item" 提供了背景图片显示能力, 本身 <a> 没有 
+	 * 
+	 *  TODO: showPopupBox() 用来点击后显示一个技术人员联系方式的小弹出框, 还不会写
+	 */ 
+	?>
 	<div class="login_item_title">
-		<a href="/ucp" class="login_item" id="login_ari" style="background-image: url(assets/images/user-control.png);"/>&nbsp;</a>
+		<a class="login_item" id="login_support" style="background-image: url(assets/images/support.png);"/>&nbsp;</a>
 		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
-			<?php echo _('User Control Panel')?>
-		</span>
-	</div>
-	<?php if($panel) {?>
-		<div class="login_item_title">
-			<a href="<?php echo $panel?>" class="login_item" id="login_fop" style="background-image: url(assets/images/operator-panel.png);"/>&nbsp;</a>
-			<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
-				<?php echo _('Operator Panel') ?>
-			</span>
-		</div>
-	<?php } ?>
-	<div class="login_item_title">
-		<a href="https://support.sangoma.com/" target="_blank" class="login_item" id="login_support" style="background-image: url(assets/images/support.png);"/>&nbsp;</a>
-		<span class="login_item_text" style="display: block;width: 160px;text-align: center;">
-			<?php echo _('Get Support') ?>
+			<button id="btn_itSupport" onclick="showPopupBox()" >联系技术支持</button>
 		</span>
 	</div>
 	<br/>

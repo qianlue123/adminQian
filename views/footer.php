@@ -5,6 +5,12 @@ global $module_name, $active_modules;
 include __DIR__ . '/../libraries/actionButton.class.php';
 use FreePBX\libraries\actionButton;
 
+/**
+ * 函数在 ../libraries/utility.functions.php :151
+ * 本质是调用 SQL:
+ *     SELECT version FROM modules WHERE modulename = 'framework' AND enabled = 1
+ * 返回: 16.0.33
+ */
 $version	 = get_framework_version();
 $version_tag = '?load_version=' . urlencode($version);
 if ($amp_conf['FORCE_JS_CSS_IMG_DOWNLOAD']) {
@@ -19,10 +25,6 @@ $html = '';
 $html .= '</div>';//page_body
 $html .= '</div>'; //page
 $html .= '<div id="footer">';
-// If displaying footer content, force the <hr /> tag to enforce clear separation of page vs. footer
-if ($footer_content) {
-	$html .= '<hr />';
-}
 
 //If we have the info... then we add the floating nav bar and the button for the user to click
 if(!$covert && !empty($nav_bar)){
@@ -43,6 +45,10 @@ if (!$covert && !empty($action_bar)) {
 	$html .= '</div>';
 }
 
+/**
+ * html页脚部分插入文字
+ * 具体内容在 footer_content.php, 样式表在 /assets/less/freepbx/page.less
+ */
 $html .= '<div id="footer_content" class="row">';
 $html .= $footer_content;
 $html .= '</div>'; //footer_content

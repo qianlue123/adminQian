@@ -6,6 +6,22 @@ assets/*
 assets/less/*
 !/assets/less/freepbx
 
+!/i18n
+i18n/*
+!/i18n/zh_CN
+
+!/modules
+modules/*
+# 字母n打头的本身还没有，放在目录里容易找到
+!/modules/new_*
+!/modules/qianlue_*
+!/modules/WP_*
+
+# 主目录的config.php涉及一些界面安全提示逻辑, 需要屏蔽 
+!config.php
 !/views
 !.gitignore
 !README.md
+
+# 自制取代脚本
+!WP_replace.sh
